@@ -32,25 +32,18 @@
             min-height: 100vh;
         }
 
-        /* COLUNA ESQUERDA */
-
         .menu {
             padding: 45px 100px;
             min-height: 100vh;
-
             display: flex;
             flex-direction: column;
         }
-
-        /* LOGO */
 
         .logo {
             font-size: 60px;
             font-weight: normal;
             margin-bottom: 65px;
         }
-
-        /* MENU PRINCIPAL */
 
         nav {
             display: flex;
@@ -68,11 +61,8 @@
             text-decoration: underline;
         }
 
-        /* MENU INFERIOR */
-
         .secondary-menu {
             margin-top: auto;
-
             display: flex;
             flex-direction: column;
             gap: 18px;
@@ -88,33 +78,22 @@
             text-decoration: underline;
         }
 
-        /* ÁREA PRINCIPAL */
-
         main {
             min-height: 100vh;
+            padding: 45px 100px;
 
             display: flex;
             align-items: center;
             justify-content: center;
-
-            padding: 45px 100px;
         }
-
-        /* FOTOGRAFIA */
 
         .main-image {
-            display: block;
-
             max-width: 100%;
             max-height: calc(100vh - 90px);
-
             width: auto;
             height: auto;
-
-            object-fit: contain;
+            display: block;
         }
-
-        /* SHARE */
 
         .share {
             position: fixed;
@@ -127,12 +106,9 @@
             background: none;
             border: none;
             padding: 0;
-            margin: 0;
-
             color: #151515;
             font-family: Georgia, "Times New Roman", serif;
             font-size: 36px;
-
             cursor: pointer;
         }
 
@@ -140,20 +116,14 @@
             text-decoration: underline;
         }
 
-        /* MENU DE PARTILHA */
-
         .share-menu {
             display: none;
-
             position: absolute;
             right: 0;
             bottom: 55px;
-
             min-width: 190px;
-
             background: #dedfe1;
             border: 1px solid #151515;
-
             padding: 18px 22px;
         }
 
@@ -168,74 +138,17 @@
             background: none;
             border: none;
             padding: 0;
-
             color: #151515;
             font-family: Georgia, "Times New Roman", serif;
             font-size: 20px;
-
             text-decoration: none;
             text-align: left;
-
             cursor: pointer;
         }
 
         .share-menu a:hover,
         .share-menu button:hover {
             text-decoration: underline;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 700px) {
-
-            .site {
-                grid-template-columns: 1fr;
-            }
-
-            .menu {
-                padding: 30px 35px;
-                min-height: 100vh;
-            }
-
-            .logo {
-                font-size: 50px;
-                margin-bottom: 45px;
-            }
-
-            nav {
-                gap: 16px;
-            }
-
-            nav a {
-                font-size: 30px;
-            }
-
-            .secondary-menu {
-                gap: 16px;
-            }
-
-            .secondary-menu a {
-                font-size: 30px;
-            }
-
-            main {
-                min-height: 70vh;
-                padding: 30px 35px;
-            }
-
-            .main-image {
-                max-width: 100%;
-                max-height: 70vh;
-            }
-
-            .share {
-                right: 35px;
-                bottom: 30px;
-            }
-
-            .share-button {
-                font-size: 30px;
-            }
         }
 
     </style>
@@ -271,7 +184,7 @@
 
             <img
                 class="main-image"
-                src="imagens/Captura de ecrã 2026-05-07, às 17.45.44.png"
+                src="imagens/foto1.png"
                 alt=""
             >
 
@@ -279,8 +192,6 @@
 
     </div>
 
-
-    <!-- SHARE -->
 
     <div class="share">
 
@@ -290,29 +201,16 @@
 
         <div class="share-menu" id="shareMenu">
 
-            <a id="whatsapp" target="_blank">
-                WhatsApp
-            </a>
-
-            <a id="facebook" target="_blank">
-                Facebook
-            </a>
-
-            <a id="twitter" target="_blank">
-                X
-            </a>
+            <a id="whatsapp" target="_blank">WhatsApp</a>
+            <a id="facebook" target="_blank">Facebook</a>
+            <a id="twitter" target="_blank">X</a>
 
             <button onclick="shareInstagram()">
                 Instagram
             </button>
 
-            <a id="telegram" target="_blank">
-                Telegram
-            </a>
-
-            <a id="email">
-                Email
-            </a>
+            <a id="telegram" target="_blank">Telegram</a>
+            <a id="email">Email</a>
 
             <button onclick="copyLink()">
                 copiar link
@@ -326,57 +224,37 @@
     <script>
 
         function toggleShare() {
-
-            const menu = document.getElementById("shareMenu");
-
-            menu.classList.toggle("open");
-
+            document
+                .getElementById("shareMenu")
+                .classList.toggle("open");
         }
 
-
         const url = encodeURIComponent(window.location.href);
-
         const title = encodeURIComponent(document.title);
-
 
         document.getElementById("whatsapp").href =
             "https://wa.me/?text=" + title + "%20" + url;
 
-
         document.getElementById("facebook").href =
             "https://www.facebook.com/sharer/sharer.php?u=" + url;
-
 
         document.getElementById("twitter").href =
             "https://twitter.com/intent/tweet?url=" + url + "&text=" + title;
 
-
         document.getElementById("telegram").href =
             "https://t.me/share/url?url=" + url + "&text=" + title;
-
 
         document.getElementById("email").href =
             "mailto:?subject=" + title + "&body=" + url;
 
-
         function shareInstagram() {
-
             navigator.clipboard.writeText(window.location.href);
-
-            window.open(
-                "https://www.instagram.com/",
-                "_blank"
-            );
-
+            window.open("https://www.instagram.com/", "_blank");
         }
 
-
         function copyLink() {
-
             navigator.clipboard.writeText(window.location.href);
-
             alert("Link copiado.");
-
         }
 
     </script>
