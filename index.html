@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>corpoarquivo.</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            background: #dedfe1;
+            color: #151515;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        .site {
+            display: grid;
+            grid-template-columns: 22% 78%;
+            min-height: 100vh;
+        }
+
+        /* MENU */
+
+        .menu {
+            padding: 45px 30px;
+        }
+
+        .logo {
+            font-size: 19px;
+            font-weight: normal;
+            margin-bottom: 75px;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        nav a {
+            color: #151515;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ÁREA PRINCIPAL */
+
+        .main {
+            min-height: 100vh;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .site {
+                grid-template-columns: 1fr;
+            }
+
+            .menu {
+                padding: 30px 24px;
+            }
+
+            .logo {
+                margin-bottom: 45px;
+            }
+
+            .main {
+                min-height: 50vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="site">
+
+        <header class="menu">
+
+            <div class="logo">
+                corpoarquivo.
+            </div>
+
+            <nav>
+                <a href="#">texto</a>
+                <a href="#">som</a>
+                <a href="#">imagem</a>
+                <a href="#">instalação</a>
+                <a href="#">performance</a>
+            </nav>
+
+        </header>
+
+        <main class="main">
+        </main>
+
+    </div>
+
+</body>
+</html>
