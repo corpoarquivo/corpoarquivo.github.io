@@ -7,6 +7,7 @@
     <title>corpoarquivo.</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -26,30 +27,24 @@
         }
 
         .site {
-            display: grid;
-            grid-template-columns: 28% 72%;
             min-height: 100vh;
+            position: relative;
         }
 
-        /* COLUNA ESQUERDA */
+        /* MENU ESQUERDO */
 
         .menu {
-            padding: 45px 100px;
-            min-height: 100vh;
-
-            display: flex;
-            flex-direction: column;
+            position: absolute;
+            top: 45px;
+            left: 100px;
+            bottom: 45px;
         }
-
-        /* LOGO */
 
         .logo {
             font-size: 60px;
             font-weight: normal;
             margin-bottom: 65px;
         }
-
-        /* MENU PRINCIPAL */
 
         nav {
             display: flex;
@@ -67,11 +62,12 @@
             text-decoration: underline;
         }
 
-        /* MENU INFERIOR */
+        /* MENU INFERIOR ESQUERDO */
 
         .secondary-menu {
-            margin-top: auto;
-            padding-top: 40px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
 
             display: flex;
             flex-direction: column;
@@ -94,26 +90,27 @@
             position: fixed;
             right: 100px;
             bottom: 45px;
+            z-index: 9999;
         }
 
-        .share button {
+        .share-button {
+            color: #151515;
             background: none;
             border: none;
             padding: 0;
             margin: 0;
 
-            color: #151515;
             font-family: Georgia, "Times New Roman", serif;
             font-size: 36px;
 
             cursor: pointer;
         }
 
-        .share button:hover {
+        .share-button:hover {
             text-decoration: underline;
         }
 
-        /* MENU DE PARTILHA */
+        /* MENU SHARE */
 
         .share-menu {
             display: none;
@@ -122,15 +119,15 @@
             right: 0;
             bottom: 55px;
 
-            min-width: 180px;
-
             background: #dedfe1;
             border: 1px solid #151515;
 
-            padding: 15px 20px;
+            padding: 18px 22px;
+
+            min-width: 190px;
         }
 
-        .share-menu.active {
+        .share-menu.open {
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -139,15 +136,14 @@
         .share-menu a,
         .share-menu button {
             color: #151515;
-            text-decoration: none;
-
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 20px;
-
             background: none;
             border: none;
             padding: 0;
 
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 20px;
+
+            text-decoration: none;
             text-align: left;
             cursor: pointer;
         }
@@ -157,23 +153,14 @@
             text-decoration: underline;
         }
 
-        /* ÁREA PRINCIPAL */
-
-        .main {
-            min-height: 100vh;
-        }
-
         /* MOBILE */
 
         @media (max-width: 700px) {
 
-            .site {
-                grid-template-columns: 1fr;
-            }
-
             .menu {
-                padding: 30px 35px;
-                min-height: 100vh;
+                top: 30px;
+                left: 35px;
+                bottom: 30px;
             }
 
             .logo {
@@ -191,7 +178,6 @@
 
             .secondary-menu {
                 gap: 16px;
-                padding-top: 35px;
             }
 
             .secondary-menu a {
@@ -203,57 +189,43 @@
                 bottom: 30px;
             }
 
-            .share button {
+            .share-button {
                 font-size: 30px;
             }
-
-            .share-menu {
-                bottom: 45px;
-            }
-
-            .main {
-                min-height: 50vh;
-            }
         }
+
     </style>
 </head>
 
 <body>
 
-    <div class="site">
+<div class="site">
 
-        <header class="menu">
+    <div class="menu">
 
-            <div class="logo">
-                corpoarquivo.
-            </div>
+        <div class="logo">
+            corpoarquivo.
+        </div>
 
-            <nav>
-                <a href="#">texto</a>
-                <a href="#">som</a>
-                <a href="#">imagem</a>
-                <a href="#">instalação</a>
-                <a href="#">performance</a>
-            </nav>
+        <nav>
+            <a href="#">texto</a>
+            <a href="#">som</a>
+            <a href="#">imagem</a>
+            <a href="#">instalação</a>
+            <a href="#">performance</a>
+        </nav>
 
-            <div class="secondary-menu">
-                <a href="#">info</a>
-                <a href="#">contacto</a>
-            </div>
-
-        </header>
-
-        <main class="main">
-        </main>
+        <div class="secondary-menu">
+            <a href="#">info</a>
+            <a href="#">contacto</a>
+        </div>
 
     </div>
 
 
-    <!-- SHARE -->
-
     <div class="share">
 
-        <button onclick="toggleShare()">
+        <button class="share-button" onclick="toggleShare()">
             share
         </button>
 
@@ -287,390 +259,53 @@
 
     </div>
 
+</div>
 
-    <script>
 
-        const pageURL = encodeURIComponent(window.location.href);
-        const pageTitle = encodeURIComponent(document.title);
+<script>
 
+    function toggleShare() {
 
-        document.getElementById("whatsapp").href =
-            "https://wa.me/?text=" + pageTitle + "%20" + pageURL;
+        const menu = document.getElementById("shareMenu");
 
+        menu.classList.toggle("open");
 
-        document.getElementById("facebook").href =
-            "https://www.facebook.com/sharer/sharer.php?u=" + pageURL;
+    }
 
 
-        document.getElementById("twitter").href =
-            "https://twitter.com/intent/tweet?url=" + pageURL + "&text=" + pageTitle;
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.title);
 
 
-        document.getElementById("telegram").href =
-            "https://t.me/share/url?url=" + pageURL + "&text=" + pageTitle;
+    document.getElementById("whatsapp").href =
+        "https://wa.me/?text=" + title + "%20" + url;
 
 
-        document.getElementById("email").href =
-            "mailto:?subject=" + pageTitle + "&body=" + pageURL;
+    document.getElementById("facebook").href =
+        "https://www.facebook.com/sharer/sharer.php?u=" + url;
 
 
-        function toggleShare() {
+    document.getElementById("twitter").href =
+        "https://twitter.com/intent/tweet?url=" + url + "&text=" + title;
 
-            const menu = document.getElementById("shareMenu");
 
-            menu.classList.toggle("active");
+    document.getElementById("telegram").href =
+        "https://t.me/share/url?url=" + url + "&text=" + title;
 
-        }
 
+    document.getElementById("email").href =
+        "mailto:?subject=" + title + "&body=" + url;
 
-        function copyLink() {
 
-            navigator.clipboard.writeText(window.location.href);
+    function copyLink() {
 
-            alert("Link copiado.");
+        navigator.clipboard.writeText(window.location.href);
 
-        }
+        alert("Link copiado.");
 
-    </script>
+    }
 
-</body>
-</html>
-```
-```html
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>corpoarquivo.</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100%;
-        }
-
-        body {
-            background: #dedfe1;
-            color: #151515;
-            font-family: Georgia, "Times New Roman", serif;
-        }
-
-        .site {
-            display: grid;
-            grid-template-columns: 28% 72%;
-            min-height: 100vh;
-        }
-
-        /* COLUNA ESQUERDA */
-
-        .menu {
-            padding: 45px 100px;
-            min-height: 100vh;
-
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* LOGO */
-
-        .logo {
-            font-size: 60px;
-            font-weight: normal;
-            margin-bottom: 65px;
-        }
-
-        /* MENU PRINCIPAL */
-
-        nav {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        nav a {
-            color: #151515;
-            text-decoration: none;
-            font-size: 36px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* MENU INFERIOR */
-
-        .secondary-menu {
-            margin-top: auto;
-            padding-top: 40px;
-
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .secondary-menu a {
-            color: #151515;
-            text-decoration: none;
-            font-size: 36px;
-        }
-
-        .secondary-menu a:hover {
-            text-decoration: underline;
-        }
-
-        /* SHARE */
-
-        .share {
-            position: fixed;
-            right: 100px;
-            bottom: 45px;
-        }
-
-        .share button {
-            background: none;
-            border: none;
-            padding: 0;
-            margin: 0;
-
-            color: #151515;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 36px;
-
-            cursor: pointer;
-        }
-
-        .share button:hover {
-            text-decoration: underline;
-        }
-
-        /* MENU DE PARTILHA */
-
-        .share-menu {
-            display: none;
-
-            position: absolute;
-            right: 0;
-            bottom: 55px;
-
-            min-width: 180px;
-
-            background: #dedfe1;
-            border: 1px solid #151515;
-
-            padding: 15px 20px;
-        }
-
-        .share-menu.active {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .share-menu a,
-        .share-menu button {
-            color: #151515;
-            text-decoration: none;
-
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 20px;
-
-            background: none;
-            border: none;
-            padding: 0;
-
-            text-align: left;
-            cursor: pointer;
-        }
-
-        .share-menu a:hover,
-        .share-menu button:hover {
-            text-decoration: underline;
-        }
-
-        /* ÁREA PRINCIPAL */
-
-        .main {
-            min-height: 100vh;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 700px) {
-
-            .site {
-                grid-template-columns: 1fr;
-            }
-
-            .menu {
-                padding: 30px 35px;
-                min-height: 100vh;
-            }
-
-            .logo {
-                font-size: 50px;
-                margin-bottom: 45px;
-            }
-
-            nav {
-                gap: 16px;
-            }
-
-            nav a {
-                font-size: 30px;
-            }
-
-            .secondary-menu {
-                gap: 16px;
-                padding-top: 35px;
-            }
-
-            .secondary-menu a {
-                font-size: 30px;
-            }
-
-            .share {
-                right: 35px;
-                bottom: 30px;
-            }
-
-            .share button {
-                font-size: 30px;
-            }
-
-            .share-menu {
-                bottom: 45px;
-            }
-
-            .main {
-                min-height: 50vh;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="site">
-
-        <header class="menu">
-
-            <div class="logo">
-                corpoarquivo.
-            </div>
-
-            <nav>
-                <a href="#">texto</a>
-                <a href="#">som</a>
-                <a href="#">imagem</a>
-                <a href="#">instalação</a>
-                <a href="#">performance</a>
-            </nav>
-
-            <div class="secondary-menu">
-                <a href="#">info</a>
-                <a href="#">contacto</a>
-            </div>
-
-        </header>
-
-        <main class="main">
-        </main>
-
-    </div>
-
-
-    <!-- SHARE -->
-
-    <div class="share">
-
-        <button onclick="toggleShare()">
-            share
-        </button>
-
-        <div class="share-menu" id="shareMenu">
-
-            <a id="whatsapp" target="_blank">
-                WhatsApp
-            </a>
-
-            <a id="facebook" target="_blank">
-                Facebook
-            </a>
-
-            <a id="twitter" target="_blank">
-                X
-            </a>
-
-            <a id="telegram" target="_blank">
-                Telegram
-            </a>
-
-            <a id="email">
-                Email
-            </a>
-
-            <button onclick="copyLink()">
-                copiar link
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <script>
-
-        const pageURL = encodeURIComponent(window.location.href);
-        const pageTitle = encodeURIComponent(document.title);
-
-
-        document.getElementById("whatsapp").href =
-            "https://wa.me/?text=" + pageTitle + "%20" + pageURL;
-
-
-        document.getElementById("facebook").href =
-            "https://www.facebook.com/sharer/sharer.php?u=" + pageURL;
-
-
-        document.getElementById("twitter").href =
-            "https://twitter.com/intent/tweet?url=" + pageURL + "&text=" + pageTitle;
-
-
-        document.getElementById("telegram").href =
-            "https://t.me/share/url?url=" + pageURL + "&text=" + pageTitle;
-
-
-        document.getElementById("email").href =
-            "mailto:?subject=" + pageTitle + "&body=" + pageURL;
-
-
-        function toggleShare() {
-
-            const menu = document.getElementById("shareMenu");
-
-            menu.classList.toggle("active");
-
-        }
-
-
-        function copyLink() {
-
-            navigator.clipboard.writeText(window.location.href);
-
-            alert("Link copiado.");
-
-        }
-
-    </script>
+</script>
 
 </body>
 </html>
