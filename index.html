@@ -37,6 +37,7 @@
         .menu {
             padding: 45px 100px;
             min-height: 100vh;
+
             display: flex;
             flex-direction: column;
         }
@@ -71,6 +72,7 @@
 
         .secondary-menu {
             margin-top: auto;
+
             display: flex;
             flex-direction: column;
             gap: 18px;
@@ -112,7 +114,7 @@
             text-decoration: underline;
         }
 
-        /* OPÇÕES DE PARTILHA */
+        /* MENU DE PARTILHA */
 
         .share-menu {
             display: none;
@@ -147,12 +149,19 @@
 
             text-decoration: none;
             text-align: left;
+
             cursor: pointer;
         }
 
         .share-menu a:hover,
         .share-menu button:hover {
             text-decoration: underline;
+        }
+
+        /* ÁREA PRINCIPAL */
+
+        main {
+            min-height: 100vh;
         }
 
         /* MOBILE */
@@ -233,7 +242,7 @@
     </div>
 
 
-    <!-- BOTÃO SHARE -->
+    <!-- SHARE -->
 
     <div class="share">
 
@@ -255,6 +264,10 @@
                 X
             </a>
 
+            <button onclick="shareInstagram()">
+                Instagram
+            </button>
+
             <a id="telegram" target="_blank">
                 Telegram
             </a>
@@ -274,6 +287,8 @@
 
     <script>
 
+        /* ABRIR / FECHAR SHARE */
+
         function toggleShare() {
 
             const menu = document.getElementById("shareMenu");
@@ -283,29 +298,58 @@
         }
 
 
+        /* URL DA PÁGINA */
+
         const url = encodeURIComponent(window.location.href);
+
         const title = encodeURIComponent(document.title);
 
+
+        /* WHATSAPP */
 
         document.getElementById("whatsapp").href =
             "https://wa.me/?text=" + title + "%20" + url;
 
 
+        /* FACEBOOK */
+
         document.getElementById("facebook").href =
             "https://www.facebook.com/sharer/sharer.php?u=" + url;
 
+
+        /* X */
 
         document.getElementById("twitter").href =
             "https://twitter.com/intent/tweet?url=" + url + "&text=" + title;
 
 
+        /* TELEGRAM */
+
         document.getElementById("telegram").href =
             "https://t.me/share/url?url=" + url + "&text=" + title;
 
 
+        /* EMAIL */
+
         document.getElementById("email").href =
             "mailto:?subject=" + title + "&body=" + url;
 
+
+        /* INSTAGRAM */
+
+        function shareInstagram() {
+
+            navigator.clipboard.writeText(window.location.href);
+
+            window.open(
+                "https://www.instagram.com/",
+                "_blank"
+            );
+
+        }
+
+
+        /* COPIAR LINK */
 
         function copyLink() {
 
