@@ -45,7 +45,11 @@ body {
 
 .site {
     display: grid;
-    grid-template-columns: 28% 72%;
+
+    /* MAIS ESPAÇO PARA O MENU */
+
+    grid-template-columns: 36% 64%;
+
     min-height: 100vh;
 }
 
@@ -56,6 +60,7 @@ body {
 
 .menu {
     padding: 45px 100px;
+
     min-height: 100vh;
 
     display: flex;
@@ -77,6 +82,7 @@ body {
     color: #151515;
 
     font-family: "IBM Plex Mono", monospace;
+
     font-size: 60px;
     font-weight: normal;
 
@@ -103,6 +109,7 @@ body {
     margin-top: 30px;
 
     opacity: 0;
+
     transform: translateY(-12px);
 
     max-height: 0;
@@ -131,7 +138,7 @@ body {
 }
 
 
-/* LINKS */
+/* LINKS DO MENU */
 
 .main-menu a {
     display: block;
@@ -194,7 +201,9 @@ main {
     padding: 45px 100px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
 
@@ -205,6 +214,7 @@ main {
     height: auto;
 
     max-width: 65%;
+
     max-height: calc(100vh - 260px);
 
     object-fit: contain;
@@ -219,6 +229,7 @@ main {
     position: fixed;
 
     top: 45px;
+
     right: 100px;
 
     display: flex;
@@ -232,9 +243,11 @@ main {
     display: block;
 
     background: transparent;
+
     border: none;
 
     padding: 0;
+
     margin: 0;
 
     color: #151515;
@@ -265,6 +278,7 @@ main {
     position: fixed;
 
     right: 100px;
+
     bottom: 45px;
 
     z-index: 1000;
@@ -272,9 +286,11 @@ main {
 
 .share-button {
     background: none;
+
     border: none;
 
     padding: 0;
+
     margin: 0;
 
     color: #151515;
@@ -301,6 +317,7 @@ main {
     position: absolute;
 
     right: 0;
+
     bottom: 55px;
 
     min-width: 190px;
@@ -323,9 +340,11 @@ main {
 .share-menu a,
 .share-menu button {
     background: none;
+
     border: none;
 
     padding: 0;
+
     margin: 0;
 
     color: #151515;
@@ -359,6 +378,7 @@ main {
 
     .menu {
         padding: 30px 35px;
+
         min-height: 100vh;
     }
 
@@ -368,11 +388,13 @@ main {
 
     .main-menu {
         gap: 16px;
+
         margin-top: 20px;
     }
 
     .main-menu a {
         font-size: 30px;
+
         white-space: normal;
     }
 
@@ -386,17 +408,21 @@ main {
 
     main {
         min-height: 70vh;
+
         padding: 30px 35px;
     }
 
     .main-image {
         max-width: 100%;
+
         max-height: 70vh;
     }
 
     .languages {
         top: 30px;
+
         right: 35px;
+
         gap: 14px;
     }
 
@@ -406,6 +432,7 @@ main {
 
     .share {
         right: 35px;
+
         bottom: 30px;
     }
 
@@ -438,7 +465,7 @@ main {
     <header class="menu">
 
 
-        <!-- LOGO / BOTÃO -->
+        <!-- LOGO -->
 
         <button
             class="logo-button"
@@ -689,17 +716,23 @@ main {
 ========================= */
 
 const logoButton =
-    document.getElementById("logoButton");
+    document.getElementById(
+        "logoButton"
+    );
 
 const mainMenu =
-    document.getElementById("mainMenu");
+    document.getElementById(
+        "mainMenu"
+    );
 
 
 logoButton.addEventListener(
     "click",
     function () {
 
-        mainMenu.classList.toggle("open");
+        mainMenu.classList.toggle(
+            "open"
+        );
 
     }
 );
@@ -789,7 +822,6 @@ const shareButton =
         "shareButton"
     );
 
-
 const shareMenu =
     document.getElementById(
         "shareMenu"
@@ -809,7 +841,7 @@ shareButton.addEventListener(
 
 
 /* =========================
-   LINKS
+   LINKS DE PARTILHA
 ========================= */
 
 const pageURL =
