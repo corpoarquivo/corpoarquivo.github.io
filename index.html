@@ -44,6 +44,7 @@ button {
     font-family: inherit;
     color: inherit;
     cursor: pointer;
+    text-decoration: none !important;
 }
 
 .logo-button,
@@ -53,7 +54,11 @@ button {
     background: none;
     border: 0;
     padding: 0;
+    text-decoration: none !important;
 }
+
+
+/* LOGO */
 
 .logo-button {
     font-size: 60px;
@@ -62,7 +67,7 @@ button {
 }
 
 
-/* HOVER */
+/* HOVER — APENAS SOMBRA */
 
 .logo-button:hover,
 .main-menu a:hover,
@@ -70,7 +75,9 @@ button {
 .share-button:hover,
 .share-menu a:hover,
 .share-menu button:hover,
-.language-button:hover {
+.language-button:hover,
+.language-button.active {
+    text-decoration: none !important;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.18);
 }
 
@@ -107,13 +114,10 @@ button {
 .main-menu a,
 .secondary-menu a {
     width: max-content;
-
     color: #151515;
-    text-decoration: none;
-
+    text-decoration: none !important;
     font-size: 28px;
     line-height: 1.25;
-
     white-space: nowrap;
 }
 
@@ -126,7 +130,6 @@ button {
 
 main {
     min-height: 100vh;
-
     padding: 45px 100px;
 
     display: flex;
@@ -136,7 +139,6 @@ main {
 
 .main-image {
     display: block;
-
     width: auto;
     height: auto;
 
@@ -153,7 +155,6 @@ main {
 
 .languages {
     position: fixed;
-
     top: 45px;
     right: 100px;
 
@@ -167,16 +168,11 @@ main {
     font-size: 18px;
 }
 
-.language-button.active {
-    text-decoration: none;
-}
-
 
 /* SHARE */
 
 .share {
     position: fixed;
-
     right: 100px;
     bottom: 45px;
 
@@ -191,12 +187,10 @@ main {
     display: none;
 
     position: absolute;
-
     right: 0;
     bottom: 45px;
 
     min-width: 190px;
-
     padding: 18px 22px;
 
     background: #dedfe1;
@@ -213,11 +207,9 @@ main {
 .share-menu a,
 .share-menu button {
     color: #151515;
-
     font-size: 20px;
-
     text-align: left;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 
@@ -246,7 +238,6 @@ main {
     main {
         min-height: 70vh;
         padding: 30px 35px;
-
         justify-content: center;
     }
 
@@ -285,90 +276,59 @@ main {
 
 <div class="site">
 
-
     <header class="menu">
-
-
-        <!-- LOGO -->
 
         <button
             class="logo-button"
             id="logoButton"
+            type="button"
         >
             corpoarquivo.
         </button>
 
-
-        <!-- MENU -->
 
         <nav
             class="main-menu"
             id="mainMenu"
         >
 
-            <a
-                href="#"
-                data-key="texto"
-            >
+            <a href="#" data-key="texto">
                 texto
             </a>
 
-            <a
-                href="#"
-                data-key="som"
-            >
+            <a href="#" data-key="som">
                 som
             </a>
 
-            <a
-                href="#"
-                data-key="imagem"
-            >
+            <a href="#" data-key="imagem">
                 imagem
             </a>
 
-            <a
-                href="#"
-                data-key="instalacao"
-            >
+            <a href="#" data-key="instalacao">
                 instalação
             </a>
 
-            <a
-                href="#"
-                data-key="performance"
-            >
+            <a href="#" data-key="performance">
                 performance
             </a>
 
         </nav>
 
 
-        <!-- INFO / CONTACTO -->
-
         <div class="secondary-menu">
 
-            <a
-                href="#"
-                data-key="info"
-            >
+            <a href="#" data-key="info">
                 info
             </a>
 
-            <a
-                href="#"
-                data-key="contacto"
-            >
+            <a href="#" data-key="contacto">
                 contacto
             </a>
 
         </div>
 
-
     </header>
 
-
-    <!-- IMAGEM -->
 
     <main>
 
@@ -380,7 +340,6 @@ main {
 
     </main>
 
-
 </div>
 
 
@@ -391,6 +350,7 @@ main {
     <button
         class="language-button active"
         data-lang="pt"
+        type="button"
     >
         PT
     </button>
@@ -398,6 +358,7 @@ main {
     <button
         class="language-button"
         data-lang="en"
+        type="button"
     >
         EN
     </button>
@@ -405,6 +366,7 @@ main {
     <button
         class="language-button"
         data-lang="fr"
+        type="button"
     >
         FR
     </button>
@@ -412,6 +374,7 @@ main {
     <button
         class="language-button"
         data-lang="es"
+        type="button"
     >
         ES
     </button>
@@ -426,6 +389,7 @@ main {
     <button
         class="share-button"
         id="shareButton"
+        type="button"
     >
         share
     </button>
@@ -436,49 +400,31 @@ main {
         id="shareMenu"
     >
 
-        <a
-            id="whatsapp"
-            target="_blank"
-        >
+        <a id="whatsapp" target="_blank">
             WhatsApp
         </a>
 
-        <a
-            id="facebook"
-            target="_blank"
-        >
+        <a id="facebook" target="_blank">
             Facebook
         </a>
 
-        <a
-            id="twitter"
-            target="_blank"
-        >
+        <a id="twitter" target="_blank">
             X
         </a>
 
-        <button
-            id="instagram"
-        >
+        <button id="instagram" type="button">
             Instagram
         </button>
 
-        <a
-            id="telegram"
-            target="_blank"
-        >
+        <a id="telegram" target="_blank">
             Telegram
         </a>
 
-        <a
-            id="email"
-        >
+        <a id="email">
             Email
         </a>
 
-        <button
-            id="copy"
-        >
+        <button id="copy" type="button">
             copiar link
         </button>
 
@@ -488,9 +434,6 @@ main {
 
 
 <script>
-
-
-/* TRADUÇÕES */
 
 const translations = {
 
@@ -539,109 +482,90 @@ const translations = {
 
 /* MENU */
 
+const logoButton = document.getElementById("logoButton");
+const mainMenu = document.getElementById("mainMenu");
+
 logoButton.onclick = () => {
-
     mainMenu.classList.toggle("open");
-
 };
 
 
 /* IDIOMAS */
 
-document
-    .querySelectorAll(".language-button")
-    .forEach(button => {
+document.querySelectorAll(".language-button").forEach(button => {
 
-        button.onclick = () => {
+    button.onclick = () => {
 
-            const lang = button.dataset.lang;
+        const lang = button.dataset.lang;
 
-            document
-                .querySelectorAll("[data-key]")
-                .forEach(el => {
+        document.querySelectorAll("[data-key]").forEach(element => {
+            element.textContent =
+                translations[lang][element.dataset.key];
+        });
 
-                    el.textContent =
-                        translations[lang][el.dataset.key];
+        document.querySelectorAll(".language-button").forEach(b => {
+            b.classList.remove("active");
+        });
 
-                });
+        button.classList.add("active");
 
-            document
-                .querySelectorAll(".language-button")
-                .forEach(b => {
+        document.documentElement.lang = lang;
+    };
 
-                    b.classList.remove("active");
-
-                });
-
-            button.classList.add("active");
-
-            document.documentElement.lang = lang;
-
-        };
-
-    });
+});
 
 
 /* SHARE */
 
+const shareButton = document.getElementById("shareButton");
+const shareMenu = document.getElementById("shareMenu");
+
 shareButton.onclick = () => {
-
     shareMenu.classList.toggle("open");
-
 };
 
 
-/* PARTILHA */
+/* LINKS DE PARTILHA */
 
-const url =
-    encodeURIComponent(location.href);
+const url = encodeURIComponent(location.href);
+const title = encodeURIComponent(document.title);
 
-const title =
-    encodeURIComponent(document.title);
-
-
-whatsapp.href =
+document.getElementById("whatsapp").href =
     `https://wa.me/?text=${title}%20${url}`;
 
-facebook.href =
+document.getElementById("facebook").href =
     `https://www.facebook.com/sharer/sharer.php?u=${url}`;
 
-twitter.href =
+document.getElementById("twitter").href =
     `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
 
-telegram.href =
+document.getElementById("telegram").href =
     `https://t.me/share/url?url=${url}&text=${title}`;
 
-email.href =
+document.getElementById("email").href =
     `mailto:?subject=${title}&body=${url}`;
 
 
 /* INSTAGRAM */
 
-instagram.onclick = () => {
+document.getElementById("instagram").onclick = () => {
 
-    navigator.clipboard.writeText(
-        location.href
-    );
+    navigator.clipboard.writeText(location.href);
 
     window.open(
         "https://www.instagram.com/",
         "_blank"
     );
-
 };
 
 
 /* COPIAR LINK */
 
-copy.onclick = () => {
+document.getElementById("copy").onclick = () => {
 
-    navigator.clipboard.writeText(
-        location.href
-    );
+    navigator.clipboard.writeText(location.href);
 
     alert("Link copiado.");
-
 };
 
 </script>
