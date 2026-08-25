@@ -88,6 +88,32 @@
             text-decoration: underline;
         }
 
+        /* ÁREA PRINCIPAL */
+
+        main {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 45px 100px;
+        }
+
+        /* FOTOGRAFIA */
+
+        .main-image {
+            display: block;
+
+            max-width: 100%;
+            max-height: calc(100vh - 90px);
+
+            width: auto;
+            height: auto;
+
+            object-fit: contain;
+        }
+
         /* SHARE */
 
         .share {
@@ -158,12 +184,6 @@
             text-decoration: underline;
         }
 
-        /* ÁREA PRINCIPAL */
-
-        main {
-            min-height: 100vh;
-        }
-
         /* MOBILE */
 
         @media (max-width: 700px) {
@@ -196,6 +216,16 @@
 
             .secondary-menu a {
                 font-size: 30px;
+            }
+
+            main {
+                min-height: 70vh;
+                padding: 30px 35px;
+            }
+
+            .main-image {
+                max-width: 100%;
+                max-height: 70vh;
             }
 
             .share {
@@ -236,7 +266,15 @@
 
         </header>
 
+
         <main>
+
+            <img
+                class="main-image"
+                src="imagens/Captura de ecrã 2026-05-07, às 17.45.44.png"
+                alt=""
+            >
+
         </main>
 
     </div>
@@ -287,8 +325,6 @@
 
     <script>
 
-        /* ABRIR / FECHAR SHARE */
-
         function toggleShare() {
 
             const menu = document.getElementById("shareMenu");
@@ -298,44 +334,30 @@
         }
 
 
-        /* URL DA PÁGINA */
-
         const url = encodeURIComponent(window.location.href);
 
         const title = encodeURIComponent(document.title);
 
 
-        /* WHATSAPP */
-
         document.getElementById("whatsapp").href =
             "https://wa.me/?text=" + title + "%20" + url;
 
-
-        /* FACEBOOK */
 
         document.getElementById("facebook").href =
             "https://www.facebook.com/sharer/sharer.php?u=" + url;
 
 
-        /* X */
-
         document.getElementById("twitter").href =
             "https://twitter.com/intent/tweet?url=" + url + "&text=" + title;
 
-
-        /* TELEGRAM */
 
         document.getElementById("telegram").href =
             "https://t.me/share/url?url=" + url + "&text=" + title;
 
 
-        /* EMAIL */
-
         document.getElementById("email").href =
             "mailto:?subject=" + title + "&body=" + url;
 
-
-        /* INSTAGRAM */
 
         function shareInstagram() {
 
@@ -348,8 +370,6 @@
 
         }
 
-
-        /* COPIAR LINK */
 
         function copyLink() {
 
