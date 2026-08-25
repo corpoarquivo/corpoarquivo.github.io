@@ -16,6 +16,10 @@
 
 <style>
 
+/* =========================
+   BASE
+========================= */
+
 * {
     box-sizing: border-box;
 }
@@ -60,7 +64,7 @@ body {
 
 
 /* =========================
-   LOGO
+   CORPOARQUIVO
 ========================= */
 
 .logo-button {
@@ -102,6 +106,7 @@ body {
     transform: translateY(-12px);
 
     max-height: 0;
+
     overflow: hidden;
 
     pointer-events: none;
@@ -120,7 +125,7 @@ body {
 
     transform: translateY(0);
 
-    max-height: 400px;
+    max-height: 600px;
 
     pointer-events: auto;
 }
@@ -129,6 +134,8 @@ body {
 /* LINKS */
 
 .main-menu a {
+    display: block;
+
     color: #151515;
 
     text-decoration: none;
@@ -136,6 +143,10 @@ body {
     font-family: "IBM Plex Mono", monospace;
 
     font-size: 36px;
+
+    line-height: 1.25;
+
+    white-space: nowrap;
 }
 
 .main-menu a:hover {
@@ -164,6 +175,8 @@ body {
     font-family: "IBM Plex Mono", monospace;
 
     font-size: 36px;
+
+    line-height: 1.25;
 }
 
 .secondary-menu a:hover {
@@ -172,7 +185,7 @@ body {
 
 
 /* =========================
-   IMAGEM
+   IMAGEM PRINCIPAL
 ========================= */
 
 main {
@@ -210,13 +223,15 @@ main {
 
     display: flex;
 
-    gap: 18px;
+    gap: 20px;
 
-    z-index: 2000;
+    z-index: 9999;
 }
 
 .language-button {
-    background: none;
+    display: block;
+
+    background: transparent;
     border: none;
 
     padding: 0;
@@ -228,15 +243,14 @@ main {
 
     font-size: 20px;
 
+    line-height: 1;
+
     cursor: pointer;
 }
 
 .language-button:hover {
     text-decoration: underline;
 }
-
-
-/* IDIOMA ACTIVO */
 
 .language-button.active {
     text-decoration: underline;
@@ -312,6 +326,7 @@ main {
     border: none;
 
     padding: 0;
+    margin: 0;
 
     color: #151515;
 
@@ -344,14 +359,25 @@ main {
 
     .menu {
         padding: 30px 35px;
+        min-height: 100vh;
     }
 
     .logo-button {
         font-size: 50px;
     }
 
+    .main-menu {
+        gap: 16px;
+        margin-top: 20px;
+    }
+
     .main-menu a {
         font-size: 30px;
+        white-space: normal;
+    }
+
+    .secondary-menu {
+        gap: 16px;
     }
 
     .secondary-menu a {
@@ -360,7 +386,6 @@ main {
 
     main {
         min-height: 70vh;
-
         padding: 30px 35px;
     }
 
@@ -372,8 +397,7 @@ main {
     .languages {
         top: 30px;
         right: 35px;
-
-        gap: 12px;
+        gap: 14px;
     }
 
     .language-button {
@@ -390,6 +414,11 @@ main {
     }
 
 }
+
+
+/* =========================
+   FIM
+========================= */
 
 </style>
 
@@ -409,13 +438,18 @@ main {
     <header class="menu">
 
 
+        <!-- LOGO / BOTÃO -->
+
         <button
             class="logo-button"
             id="logoButton"
+            type="button"
         >
             corpoarquivo.
         </button>
 
+
+        <!-- MENU POP-UP -->
 
         <nav
             class="main-menu"
@@ -479,8 +513,9 @@ main {
         </nav>
 
 
-        <div class="secondary-menu">
+        <!-- INFO / CONTACTO -->
 
+        <div class="secondary-menu">
 
             <a
                 href="#"
@@ -503,8 +538,8 @@ main {
                 contacto
             </a>
 
-
         </div>
+
 
     </header>
 
@@ -535,16 +570,9 @@ main {
 
 
     <button
-        class="language-button active"
-        data-language="pt"
-    >
-        PT
-    </button>
-
-
-    <button
         class="language-button"
         data-language="en"
+        type="button"
     >
         EN
     </button>
@@ -553,6 +581,7 @@ main {
     <button
         class="language-button"
         data-language="fr"
+        type="button"
     >
         FR
     </button>
@@ -561,6 +590,7 @@ main {
     <button
         class="language-button"
         data-language="es"
+        type="button"
     >
         ES
     </button>
@@ -579,6 +609,7 @@ main {
     <button
         class="share-button"
         id="shareButton"
+        type="button"
     >
         share
     </button>
@@ -589,10 +620,10 @@ main {
         id="shareMenu"
     >
 
-
         <a
             id="whatsapp"
             target="_blank"
+            rel="noopener"
         >
             WhatsApp
         </a>
@@ -601,6 +632,7 @@ main {
         <a
             id="facebook"
             target="_blank"
+            rel="noopener"
         >
             Facebook
         </a>
@@ -609,6 +641,7 @@ main {
         <a
             id="twitter"
             target="_blank"
+            rel="noopener"
         >
             X
         </a>
@@ -616,6 +649,7 @@ main {
 
         <button
             id="instagramButton"
+            type="button"
         >
             Instagram
         </button>
@@ -624,6 +658,7 @@ main {
         <a
             id="telegram"
             target="_blank"
+            rel="noopener"
         >
             Telegram
         </a>
@@ -636,10 +671,10 @@ main {
 
         <button
             id="copyButton"
+            type="button"
         >
             copiar link
         </button>
-
 
     </div>
 
@@ -671,7 +706,7 @@ logoButton.addEventListener(
 
 
 /* =========================
-   TRADUÇÃO
+   IDIOMAS
 ========================= */
 
 const languageButtons =
@@ -694,18 +729,18 @@ languageButtons.forEach(
             function() {
 
                 const language =
-                    button.dataset.language;
+                    button.getAttribute(
+                        "data-language"
+                    );
 
-
-                /*
-                 * ALTERA TODOS OS TEXTOS
-                 */
 
                 translatableElements.forEach(
                     function(element) {
 
                         const translation =
-                            element.dataset[language];
+                            element.getAttribute(
+                                "data-" + language
+                            );
 
 
                         if (translation) {
@@ -719,17 +754,9 @@ languageButtons.forEach(
                 );
 
 
-                /*
-                 * ACTUALIZA O IDIOMA DA PÁGINA
-                 */
-
                 document.documentElement.lang =
                     language;
 
-
-                /*
-                 * MARCA O IDIOMA ACTIVO
-                 */
 
                 languageButtons.forEach(
                     function(otherButton) {
@@ -758,33 +785,40 @@ languageButtons.forEach(
 ========================= */
 
 const shareButton =
-    document.getElementById("shareButton");
+    document.getElementById(
+        "shareButton"
+    );
+
 
 const shareMenu =
-    document.getElementById("shareMenu");
+    document.getElementById(
+        "shareMenu"
+    );
 
 
 shareButton.addEventListener(
     "click",
     function() {
 
-        shareMenu.classList.toggle("open");
+        shareMenu.classList.toggle(
+            "open"
+        );
 
     }
 );
 
 
 /* =========================
-   LINKS DE PARTILHA
+   LINKS
 ========================= */
 
-const url =
+const pageURL =
     encodeURIComponent(
         window.location.href
     );
 
 
-const title =
+const pageTitle =
     encodeURIComponent(
         document.title
     );
@@ -794,43 +828,43 @@ document.getElementById(
     "whatsapp"
 ).href =
     "https://wa.me/?text="
-    + title
+    + pageTitle
     + "%20"
-    + url;
+    + pageURL;
 
 
 document.getElementById(
     "facebook"
 ).href =
     "https://www.facebook.com/sharer/sharer.php?u="
-    + url;
+    + pageURL;
 
 
 document.getElementById(
     "twitter"
 ).href =
     "https://twitter.com/intent/tweet?url="
-    + url
+    + pageURL
     + "&text="
-    + title;
+    + pageTitle;
 
 
 document.getElementById(
     "telegram"
 ).href =
     "https://t.me/share/url?url="
-    + url
+    + pageURL
     + "&text="
-    + title;
+    + pageTitle;
 
 
 document.getElementById(
     "email"
 ).href =
     "mailto:?subject="
-    + title
+    + pageTitle
     + "&body="
-    + url;
+    + pageURL;
 
 
 /* =========================
@@ -874,6 +908,7 @@ document.getElementById(
 
     }
 );
+
 
 </script>
 
