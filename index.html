@@ -35,6 +35,8 @@
 
         .menu {
             padding: 45px 100px;
+            position: relative;
+            min-height: 100vh;
         }
 
         .logo {
@@ -59,6 +61,27 @@
             text-decoration: underline;
         }
 
+        /* MENU INFERIOR */
+
+        .secondary-menu {
+            position: absolute;
+            left: 100px;
+            bottom: 45px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .secondary-menu a {
+            color: #151515;
+            text-decoration: none;
+            font-size: 36px;
+        }
+
+        .secondary-menu a:hover {
+            text-decoration: underline;
+        }
+
         /* ÁREA PRINCIPAL */
 
         .main {
@@ -75,6 +98,7 @@
 
             .menu {
                 padding: 30px 35px;
+                min-height: 100vh;
             }
 
             .logo {
@@ -87,6 +111,16 @@
             }
 
             nav a {
+                font-size: 30px;
+            }
+
+            .secondary-menu {
+                left: 35px;
+                bottom: 30px;
+                gap: 16px;
+            }
+
+            .secondary-menu a {
                 font-size: 30px;
             }
 
@@ -114,6 +148,11 @@
                 <a href="#">instalação</a>
                 <a href="#">performance</a>
             </nav>
+
+            <div class="secondary-menu">
+                <a href="#">info</a>
+                <a href="#">contacto</a>
+            </div>
 
         </header>
 
