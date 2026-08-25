@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -112,7 +113,7 @@ body {
     color: #151515;
     text-decoration: none;
 
-    font-size: 36px;
+    font-size: 28px;
     line-height: 1.25;
 
     white-space: nowrap;
@@ -200,7 +201,7 @@ main {
 }
 
 .share-button {
-    font-size: 36px;
+    font-size: 28px;
 }
 
 
@@ -212,7 +213,7 @@ main {
     position: absolute;
 
     right: 0;
-    bottom: 55px;
+    bottom: 45px;
 
     min-width: 190px;
 
@@ -264,7 +265,7 @@ main {
 
     .main-menu a,
     .secondary-menu a {
-        font-size: 30px;
+        font-size: 24px;
         white-space: normal;
     }
 
@@ -294,8 +295,9 @@ main {
     }
 
     .share-button {
-        font-size: 30px;
+        font-size: 24px;
     }
+
 }
 
 </style>
@@ -575,7 +577,6 @@ document
 
             const lang = button.dataset.lang;
 
-
             document
                 .querySelectorAll("[data-key]")
                 .forEach(element => {
@@ -587,7 +588,6 @@ document
 
                 });
 
-
             document
                 .querySelectorAll(".language-button")
                 .forEach(b => {
@@ -595,7 +595,6 @@ document
                     b.classList.remove("active");
 
                 });
-
 
             button.classList.add("active");
 
