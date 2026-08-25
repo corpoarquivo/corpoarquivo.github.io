@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>corpoarquivo.</title>
 
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; }
 
-html, body {
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
     margin: 0;
     min-height: 100%;
 }
@@ -188,6 +194,7 @@ main {
 /* MOBILE */
 
 @media (max-width: 700px) {
+
     .site {
         grid-template-columns: 1fr;
     }
@@ -235,6 +242,7 @@ main {
         font-size: 24px;
     }
 }
+
 </style>
 </head>
 
@@ -249,26 +257,33 @@ main {
         </button>
 
         <nav class="main-menu" id="mainMenu">
+
             <a href="#" data-key="texto">texto</a>
             <a href="#" data-key="som">som</a>
             <a href="#" data-key="imagem">imagem</a>
             <a href="#" data-key="instalacao">instalação</a>
             <a href="#" data-key="performance">performance</a>
+
         </nav>
 
         <div class="secondary-menu">
+
             <a href="#" data-key="info">info</a>
             <a href="#" data-key="contacto">contacto</a>
+
         </div>
 
     </header>
 
+
     <main>
+
         <img
             class="main-image"
             src="imagens/imagem.png"
             alt=""
         >
+
     </main>
 
 </div>
@@ -277,10 +292,35 @@ main {
 <!-- IDIOMAS -->
 
 <div class="languages">
-    <button class="language-button active" data-lang="pt">Português</button>
-    <button class="language-button" data-lang="en">English</button>
-    <button class="language-button" data-lang="fr">Français</button>
-    <button class="language-button" data-lang="es">Español</button>
+
+    <button
+        class="language-button active"
+        data-lang="pt"
+    >
+        PT
+    </button>
+
+    <button
+        class="language-button"
+        data-lang="en"
+    >
+        EN
+    </button>
+
+    <button
+        class="language-button"
+        data-lang="fr"
+    >
+        FR
+    </button>
+
+    <button
+        class="language-button"
+        data-lang="es"
+    >
+        ES
+    </button>
+
 </div>
 
 
@@ -288,22 +328,32 @@ main {
 
 <div class="share">
 
-    <button class="share-button" id="shareButton">
+    <button
+        class="share-button"
+        id="shareButton"
+    >
         share
     </button>
 
-    <div class="share-menu" id="shareMenu">
+    <div
+        class="share-menu"
+        id="shareMenu"
+    >
 
         <a id="whatsapp" target="_blank">WhatsApp</a>
         <a id="facebook" target="_blank">Facebook</a>
         <a id="twitter" target="_blank">X</a>
 
-        <button id="instagram">Instagram</button>
+        <button id="instagram">
+            Instagram
+        </button>
 
         <a id="telegram" target="_blank">Telegram</a>
         <a id="email">Email</a>
 
-        <button id="copy">copiar link</button>
+        <button id="copy">
+            copiar link
+        </button>
 
     </div>
 
@@ -313,6 +363,7 @@ main {
 <script>
 
 const translations = {
+
     pt: {
         texto: "texto",
         som: "som",
@@ -322,6 +373,7 @@ const translations = {
         info: "info",
         contacto: "contacto"
     },
+
     en: {
         texto: "text",
         som: "sound",
@@ -331,6 +383,7 @@ const translations = {
         info: "info",
         contacto: "contact"
     },
+
     fr: {
         texto: "texte",
         som: "son",
@@ -340,6 +393,7 @@ const translations = {
         info: "info",
         contacto: "contact"
     },
+
     es: {
         texto: "texto",
         som: "sonido",
@@ -349,40 +403,54 @@ const translations = {
         info: "info",
         contacto: "contacto"
     }
+
 };
 
 
 /* MENU */
 
-logoButton.onclick = () =>
+logoButton.onclick = () => {
     mainMenu.classList.toggle("open");
+};
 
 
 /* IDIOMAS */
 
-document.querySelectorAll(".language-button").forEach(button => {
+document
+    .querySelectorAll(".language-button")
+    .forEach(button => {
 
-    button.onclick = () => {
+        button.onclick = () => {
 
-        const lang = button.dataset.lang;
+            const lang = button.dataset.lang;
 
-        document.querySelectorAll("[data-key]").forEach(el => {
-            el.textContent = translations[lang][el.dataset.key];
-        });
+            document
+                .querySelectorAll("[data-key]")
+                .forEach(el => {
+                    el.textContent =
+                        translations[lang][el.dataset.key];
+                });
 
-        document.querySelectorAll(".language-button").forEach(b =>
-            b.classList.toggle("active", b === button)
-        );
+            document
+                .querySelectorAll(".language-button")
+                .forEach(b => {
+                    b.classList.toggle(
+                        "active",
+                        b === button
+                    );
+                });
 
-        document.documentElement.lang = lang;
-    };
-});
+            document.documentElement.lang = lang;
+        };
+
+    });
 
 
 /* SHARE */
 
-shareButton.onclick = () =>
+shareButton.onclick = () => {
     shareMenu.classList.toggle("open");
+};
 
 
 /* PARTILHA */
@@ -390,26 +458,44 @@ shareButton.onclick = () =>
 const url = encodeURIComponent(location.href);
 const title = encodeURIComponent(document.title);
 
-whatsapp.href = `https://wa.me/?text=${title}%20${url}`;
-facebook.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-twitter.href = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
-telegram.href = `https://t.me/share/url?url=${url}&text=${title}`;
-email.href = `mailto:?subject=${title}&body=${url}`;
+whatsapp.href =
+    `https://wa.me/?text=${title}%20${url}`;
+
+facebook.href =
+    `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+
+twitter.href =
+    `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+
+telegram.href =
+    `https://t.me/share/url?url=${url}&text=${title}`;
+
+email.href =
+    `mailto:?subject=${title}&body=${url}`;
 
 
 /* INSTAGRAM */
 
 instagram.onclick = () => {
+
     navigator.clipboard.writeText(location.href);
-    window.open("https://www.instagram.com/", "_blank");
+
+    window.open(
+        "https://www.instagram.com/",
+        "_blank"
+    );
+
 };
 
 
-/* COPIAR */
+/* COPIAR LINK */
 
 copy.onclick = () => {
+
     navigator.clipboard.writeText(location.href);
+
     alert("Link copiado.");
+
 };
 
 </script>
