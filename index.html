@@ -1,33 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>corpoarquivo.</title>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================
-   BASE
-========================= */
-
 * {
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     margin: 0;
-    padding: 0;
-    width: 100%;
     min-height: 100%;
 }
 
@@ -37,176 +23,86 @@ body {
     font-family: "IBM Plex Mono", monospace;
 }
 
-
-/* =========================
-   ESTRUTURA
-========================= */
-
 .site {
     display: grid;
     grid-template-columns: 36% 64%;
     min-height: 100vh;
 }
 
-
-/* =========================
-   MENU ESQUERDO
-========================= */
-
 .menu {
     padding: 45px 100px;
     min-height: 100vh;
-    min-width: 0;
-
     display: flex;
     flex-direction: column;
 }
 
-
-/* =========================
-   LOGO
-========================= */
+.logo-button,
+.share-button {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: #151515;
+    font: inherit;
+    cursor: pointer;
+}
 
 .logo-button {
-    background: none;
-    border: none;
-
-    padding: 0;
-    margin: 0;
-
-    color: #151515;
-
-    font-family: "IBM Plex Mono", monospace;
     font-size: 60px;
-    font-weight: normal;
-
     text-align: left;
-
-    cursor: pointer;
-
     white-space: nowrap;
 }
 
-.logo-button:hover {
+.logo-button:hover,
+.main-menu a:hover,
+.secondary-menu a:hover,
+.share-button:hover,
+.share-menu a:hover,
+.share-menu button:hover,
+.language-button:hover {
     text-decoration: underline;
 }
-
-
-/* =========================
-   MENU POP-UP
-========================= */
 
 .main-menu {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
     gap: 18px;
-
     margin-top: 30px;
-
     opacity: 0;
     transform: translateY(-12px);
-
-    max-height: 0;
-
-    overflow: hidden;
-
+    visibility: hidden;
     pointer-events: none;
-
-    transition:
-        opacity 0.35s ease,
-        transform 0.35s ease,
-        max-height 0.45s ease;
+    transition: opacity .35s ease, transform .35s ease;
 }
-
-
-/* MENU ABERTO */
 
 .main-menu.open {
     opacity: 1;
     transform: translateY(0);
-
-    max-height: 600px;
-
-    overflow: visible;
-
+    visibility: visible;
     pointer-events: auto;
 }
 
-
-/* LINKS DO MENU */
-
-.main-menu a {
+.main-menu a,
+.secondary-menu a {
     display: block;
-
     width: max-content;
-    max-width: none;
-
     color: #151515;
-
     text-decoration: none;
-
-    font-family: "IBM Plex Mono", monospace;
-
     font-size: 36px;
-
     line-height: 1.25;
-
     white-space: nowrap;
 }
-
-.main-menu a:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================
-   INFO / CONTACTO
-========================= */
 
 .secondary-menu {
     margin-top: auto;
-
     display: flex;
     flex-direction: column;
-
     gap: 18px;
 }
 
-.secondary-menu a {
-    display: block;
-
-    width: max-content;
-
-    color: #151515;
-
-    text-decoration: none;
-
-    font-family: "IBM Plex Mono", monospace;
-
-    font-size: 36px;
-
-    line-height: 1.25;
-
-    white-space: nowrap;
-}
-
-.secondary-menu a:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================
-   IMAGEM PRINCIPAL
-========================= */
-
 main {
     min-height: 100vh;
-    min-width: 0;
-
     padding: 45px 100px;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -214,189 +110,92 @@ main {
 
 .main-image {
     display: block;
-
     width: auto;
     height: auto;
-
     max-width: 65%;
     max-height: calc(100vh - 260px);
-
     object-fit: contain;
 }
 
-
-/* =========================
-   IDIOMAS
-========================= */
-
 .languages {
     position: fixed;
-
     top: 45px;
     right: 100px;
-
     display: flex;
-
     gap: 20px;
-
-    z-index: 9999;
+    z-index: 10;
 }
 
 .language-button {
-    display: block;
-
-    background: transparent;
-    border: none;
-
+    background: none;
+    border: 0;
     padding: 0;
-    margin: 0;
-
     color: #151515;
-
-    font-family: "IBM Plex Mono", monospace;
-
-    font-size: 20px;
-
-    line-height: 1;
-
+    font: 20px "IBM Plex Mono", monospace;
     cursor: pointer;
-}
-
-.language-button:hover {
-    text-decoration: underline;
 }
 
 .language-button.active {
     text-decoration: underline;
 }
 
-
-/* =========================
-   SHARE
-========================= */
-
 .share {
     position: fixed;
-
     right: 100px;
     bottom: 45px;
-
-    z-index: 1000;
+    z-index: 10;
 }
 
 .share-button {
-    background: none;
-    border: none;
-
-    padding: 0;
-    margin: 0;
-
-    color: #151515;
-
-    font-family: "IBM Plex Mono", monospace;
-
     font-size: 36px;
-
-    cursor: pointer;
 }
-
-.share-button:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================
-   MENU SHARE
-========================= */
 
 .share-menu {
     display: none;
-
     position: absolute;
-
     right: 0;
     bottom: 55px;
-
     min-width: 190px;
-
-    background: #dedfe1;
-
-    border: 1px solid #151515;
-
     padding: 18px 22px;
+    background: #dedfe1;
+    border: 1px solid #151515;
 }
 
 .share-menu.open {
     display: flex;
-
     flex-direction: column;
-
     gap: 12px;
 }
 
 .share-menu a,
 .share-menu button {
     background: none;
-    border: none;
-
+    border: 0;
     padding: 0;
-    margin: 0;
-
     color: #151515;
-
-    font-family: "IBM Plex Mono", monospace;
-
-    font-size: 20px;
-
-    text-decoration: none;
-
+    font: 20px "IBM Plex Mono", monospace;
     text-align: left;
-
+    text-decoration: none;
     cursor: pointer;
 }
 
-.share-menu a:hover,
-.share-menu button:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 700px) {
-
     .site {
         grid-template-columns: 1fr;
     }
 
     .menu {
         padding: 30px 35px;
-        min-height: 100vh;
     }
 
     .logo-button {
         font-size: 50px;
     }
 
-    .main-menu {
-        gap: 16px;
-        margin-top: 20px;
-    }
-
-    .main-menu a {
-        font-size: 30px;
-        white-space: normal;
-        width: auto;
-    }
-
-    .secondary-menu {
-        gap: 16px;
-    }
-
+    .main-menu a,
     .secondary-menu a {
         font-size: 30px;
+        white-space: normal;
     }
 
     main {
@@ -427,277 +226,82 @@ main {
     .share-button {
         font-size: 30px;
     }
-
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     ESTRUTURA
-========================= -->
-
 <div class="site">
-
-
-    <!-- =========================
-         MENU
-    ========================= -->
 
     <header class="menu">
 
-
-        <!-- LOGO -->
-
-        <button
-            class="logo-button"
-            id="logoButton"
-            type="button"
-        >
+        <button class="logo-button" id="logoButton">
             corpoarquivo.
         </button>
 
+        <nav class="main-menu" id="mainMenu">
 
-        <!-- =========================
-             MENU POP-UP
-        ========================= -->
-
-        <nav
-            class="main-menu"
-            id="mainMenu"
-        >
-
-            <a
-                href="#"
-                data-pt="texto"
-                data-en="text"
-                data-fr="texte"
-                data-es="texto"
-            >
-                texto
-            </a>
-
-
-            <a
-                href="#"
-                data-pt="som"
-                data-en="sound"
-                data-fr="son"
-                data-es="sonido"
-            >
-                som
-            </a>
-
-
-            <a
-                href="#"
-                data-pt="imagem"
-                data-en="image"
-                data-fr="image"
-                data-es="imagen"
-            >
-                imagem
-            </a>
-
-
-            <a
-                href="#"
-                data-pt="instalação"
-                data-en="installation"
-                data-fr="installation"
-                data-es="instalación"
-            >
-                instalação
-            </a>
-
-
-            <a
-                href="#"
-                data-pt="performance"
-                data-en="performance"
-                data-fr="performance"
-                data-es="performance"
-            >
-                performance
-            </a>
+            <a href="#" data-key="texto">texto</a>
+            <a href="#" data-key="som">som</a>
+            <a href="#" data-key="imagem">imagem</a>
+            <a href="#" data-key="instalacao">instalação</a>
+            <a href="#" data-key="performance">performance</a>
 
         </nav>
 
-
-        <!-- =========================
-             INFO / CONTACTO
-        ========================= -->
-
         <div class="secondary-menu">
-
-            <a
-                href="#"
-                data-pt="info"
-                data-en="info"
-                data-fr="info"
-                data-es="info"
-            >
-                info
-            </a>
-
-
-            <a
-                href="#"
-                data-pt="contacto"
-                data-en="contact"
-                data-fr="contact"
-                data-es="contacto"
-            >
-                contacto
-            </a>
-
+            <a href="#" data-key="info">info</a>
+            <a href="#" data-key="contacto">contacto</a>
         </div>
-
 
     </header>
 
-
-    <!-- =========================
-         IMAGEM
-    ========================= -->
-
     <main>
-
         <img
             class="main-image"
             src="imagens/imagem.png"
             alt=""
         >
-
     </main>
-
 
 </div>
 
 
-<!-- =========================
-     IDIOMAS
-========================= -->
+<!-- IDIOMAS -->
 
 <div class="languages">
 
-    <button
-        class="language-button active"
-        data-language="pt"
-        type="button"
-    >
-        PT
-    </button>
-
-
-    <button
-        class="language-button"
-        data-language="en"
-        type="button"
-    >
-        EN
-    </button>
-
-
-    <button
-        class="language-button"
-        data-language="fr"
-        type="button"
-    >
-        FR
-    </button>
-
-
-    <button
-        class="language-button"
-        data-language="es"
-        type="button"
-    >
-        ES
-    </button>
+    <button class="language-button active" data-lang="pt">PT</button>
+    <button class="language-button" data-lang="en">EN</button>
+    <button class="language-button" data-lang="fr">FR</button>
+    <button class="language-button" data-lang="es">ES</button>
 
 </div>
 
 
-<!-- =========================
-     SHARE
-========================= -->
+<!-- SHARE -->
 
 <div class="share">
 
-
-    <button
-        class="share-button"
-        id="shareButton"
-        type="button"
-    >
+    <button class="share-button" id="shareButton">
         share
     </button>
 
+    <div class="share-menu" id="shareMenu">
 
-    <div
-        class="share-menu"
-        id="shareMenu"
-    >
+        <a id="whatsapp" target="_blank">WhatsApp</a>
+        <a id="facebook" target="_blank">Facebook</a>
+        <a id="twitter" target="_blank">X</a>
 
-        <a
-            id="whatsapp"
-            target="_blank"
-            rel="noopener"
-        >
-            WhatsApp
-        </a>
-
-
-        <a
-            id="facebook"
-            target="_blank"
-            rel="noopener"
-        >
-            Facebook
-        </a>
-
-
-        <a
-            id="twitter"
-            target="_blank"
-            rel="noopener"
-        >
-            X
-        </a>
-
-
-        <button
-            id="instagramButton"
-            type="button"
-        >
+        <button id="instagram">
             Instagram
         </button>
 
+        <a id="telegram" target="_blank">Telegram</a>
+        <a id="email">Email</a>
 
-        <a
-            id="telegram"
-            target="_blank"
-            rel="noopener"
-        >
-            Telegram
-        </a>
-
-
-        <a id="email">
-            Email
-        </a>
-
-
-        <button
-            id="copyButton"
-            type="button"
-        >
+        <button id="copy">
             copiar link
         </button>
 
@@ -707,233 +311,130 @@ main {
 
 
 <script>
+const translations = {
+    pt: {
+        texto: "texto",
+        som: "som",
+        imagem: "imagem",
+        instalacao: "instalação",
+        performance: "performance",
+        info: "info",
+        contacto: "contacto"
+    },
 
+    en: {
+        texto: "text",
+        som: "sound",
+        imagem: "image",
+        instalacao: "installation",
+        performance: "performance",
+        info: "info",
+        contacto: "contact"
+    },
 
-/* =========================
-   MENU PRINCIPAL
-========================= */
+    fr: {
+        texto: "texte",
+        som: "son",
+        imagem: "image",
+        instalacao: "installation",
+        performance: "performance",
+        info: "info",
+        contacto: "contact"
+    },
 
-const logoButton =
-    document.getElementById("logoButton");
-
-const mainMenu =
-    document.getElementById("mainMenu");
-
-
-logoButton.addEventListener(
-    "click",
-    function () {
-
-        mainMenu.classList.toggle("open");
-
+    es: {
+        texto: "texto",
+        som: "sonido",
+        imagem: "imagen",
+        instalacao: "instalación",
+        performance: "performance",
+        info: "info",
+        contacto: "contacto"
     }
-);
+};
 
 
-/* =========================
-   IDIOMAS
-========================= */
+/* MENU */
 
-const languageButtons =
-    document.querySelectorAll(
-        ".language-button"
+document.getElementById("logoButton").onclick = () => {
+    document.getElementById("mainMenu").classList.toggle("open");
+};
+
+
+/* IDIOMAS */
+
+document.querySelectorAll(".language-button").forEach(button => {
+
+    button.onclick = () => {
+
+        const lang = button.dataset.lang;
+
+        document.querySelectorAll("[data-key]").forEach(element => {
+            element.textContent = translations[lang][element.dataset.key];
+        });
+
+        document.querySelectorAll(".language-button").forEach(b => {
+            b.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        document.documentElement.lang = lang;
+    };
+});
+
+
+/* SHARE */
+
+const shareButton = document.getElementById("shareButton");
+const shareMenu = document.getElementById("shareMenu");
+
+shareButton.onclick = () => {
+    shareMenu.classList.toggle("open");
+};
+
+
+const url = encodeURIComponent(window.location.href);
+const title = encodeURIComponent(document.title);
+
+document.getElementById("whatsapp").href =
+    `https://wa.me/?text=${title}%20${url}`;
+
+document.getElementById("facebook").href =
+    `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+
+document.getElementById("twitter").href =
+    `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+
+document.getElementById("telegram").href =
+    `https://t.me/share/url?url=${url}&text=${title}`;
+
+document.getElementById("email").href =
+    `mailto:?subject=${title}&body=${url}`;
+
+
+/* INSTAGRAM */
+
+document.getElementById("instagram").onclick = () => {
+
+    navigator.clipboard.writeText(window.location.href);
+
+    window.open(
+        "https://www.instagram.com/",
+        "_blank"
     );
-
-const translatableElements =
-    document.querySelectorAll(
-        "[data-pt]"
-    );
+};
 
 
-languageButtons.forEach(
-    function(button) {
+/* COPIAR LINK */
 
-        button.addEventListener(
-            "click",
-            function() {
+document.getElementById("copy").onclick = () => {
 
-                const language =
-                    button.getAttribute(
-                        "data-language"
-                    );
+    navigator.clipboard.writeText(window.location.href);
 
+    alert("Link copiado.");
 
-                translatableElements.forEach(
-                    function(element) {
-
-                        const translation =
-                            element.getAttribute(
-                                "data-" + language
-                            );
-
-
-                        if (translation) {
-
-                            element.textContent =
-                                translation;
-
-                        }
-
-                    }
-                );
-
-
-                document.documentElement.lang =
-                    language;
-
-
-                languageButtons.forEach(
-                    function(otherButton) {
-
-                        otherButton.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-
-                button.classList.add(
-                    "active"
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================
-   SHARE
-========================= */
-
-const shareButton =
-    document.getElementById(
-        "shareButton"
-    );
-
-const shareMenu =
-    document.getElementById(
-        "shareMenu"
-    );
-
-
-shareButton.addEventListener(
-    "click",
-    function() {
-
-        shareMenu.classList.toggle(
-            "open"
-        );
-
-    }
-);
-
-
-/* =========================
-   LINKS DE PARTILHA
-========================= */
-
-const pageURL =
-    encodeURIComponent(
-        window.location.href
-    );
-
-const pageTitle =
-    encodeURIComponent(
-        document.title
-    );
-
-
-document.getElementById(
-    "whatsapp"
-).href =
-    "https://wa.me/?text="
-    + pageTitle
-    + "%20"
-    + pageURL;
-
-
-document.getElementById(
-    "facebook"
-).href =
-    "https://www.facebook.com/sharer/sharer.php?u="
-    + pageURL;
-
-
-document.getElementById(
-    "twitter"
-).href =
-    "https://twitter.com/intent/tweet?url="
-    + pageURL
-    + "&text="
-    + pageTitle;
-
-
-document.getElementById(
-    "telegram"
-).href =
-    "https://t.me/share/url?url="
-    + pageURL
-    + "&text="
-    + pageTitle;
-
-
-document.getElementById(
-    "email"
-).href =
-    "mailto:?subject="
-    + pageTitle
-    + "&body="
-    + pageURL;
-
-
-/* =========================
-   INSTAGRAM
-========================= */
-
-document.getElementById(
-    "instagramButton"
-).addEventListener(
-    "click",
-    function() {
-
-        navigator.clipboard.writeText(
-            window.location.href
-        );
-
-        window.open(
-            "https://www.instagram.com/",
-            "_blank"
-        );
-
-    }
-);
-
-
-/* =========================
-   COPIAR LINK
-========================= */
-
-document.getElementById(
-    "copyButton"
-).addEventListener(
-    "click",
-    function() {
-
-        navigator.clipboard.writeText(
-            window.location.href
-        );
-
-        alert("Link copiado.");
-
-    }
-);
-
-
+};
 </script>
-
 
 </body>
 </html>
