@@ -27,24 +27,29 @@
         }
 
         .site {
+            display: grid;
+            grid-template-columns: 28% 72%;
             min-height: 100vh;
-            position: relative;
         }
 
-        /* MENU ESQUERDO */
+        /* COLUNA ESQUERDA */
 
         .menu {
-            position: absolute;
-            top: 45px;
-            left: 100px;
-            bottom: 45px;
+            padding: 45px 100px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
+
+        /* LOGO */
 
         .logo {
             font-size: 60px;
             font-weight: normal;
             margin-bottom: 65px;
         }
+
+        /* MENU PRINCIPAL */
 
         nav {
             display: flex;
@@ -62,13 +67,10 @@
             text-decoration: underline;
         }
 
-        /* MENU INFERIOR ESQUERDO */
+        /* MENU INFERIOR */
 
         .secondary-menu {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-
+            margin-top: auto;
             display: flex;
             flex-direction: column;
             gap: 18px;
@@ -90,16 +92,16 @@
             position: fixed;
             right: 100px;
             bottom: 45px;
-            z-index: 9999;
+            z-index: 1000;
         }
 
         .share-button {
-            color: #151515;
             background: none;
             border: none;
             padding: 0;
             margin: 0;
 
+            color: #151515;
             font-family: Georgia, "Times New Roman", serif;
             font-size: 36px;
 
@@ -110,7 +112,7 @@
             text-decoration: underline;
         }
 
-        /* MENU SHARE */
+        /* OPÇÕES DE PARTILHA */
 
         .share-menu {
             display: none;
@@ -119,12 +121,12 @@
             right: 0;
             bottom: 55px;
 
+            min-width: 190px;
+
             background: #dedfe1;
             border: 1px solid #151515;
 
             padding: 18px 22px;
-
-            min-width: 190px;
         }
 
         .share-menu.open {
@@ -135,11 +137,11 @@
 
         .share-menu a,
         .share-menu button {
-            color: #151515;
             background: none;
             border: none;
             padding: 0;
 
+            color: #151515;
             font-family: Georgia, "Times New Roman", serif;
             font-size: 20px;
 
@@ -157,10 +159,13 @@
 
         @media (max-width: 700px) {
 
+            .site {
+                grid-template-columns: 1fr;
+            }
+
             .menu {
-                top: 30px;
-                left: 35px;
-                bottom: 30px;
+                padding: 30px 35px;
+                min-height: 100vh;
             }
 
             .logo {
@@ -199,29 +204,36 @@
 
 <body>
 
-<div class="site">
+    <div class="site">
 
-    <div class="menu">
+        <header class="menu">
 
-        <div class="logo">
-            corpoarquivo.
-        </div>
+            <div class="logo">
+                corpoarquivo.
+            </div>
 
-        <nav>
-            <a href="#">texto</a>
-            <a href="#">som</a>
-            <a href="#">imagem</a>
-            <a href="#">instalação</a>
-            <a href="#">performance</a>
-        </nav>
+            <nav>
+                <a href="#">texto</a>
+                <a href="#">som</a>
+                <a href="#">imagem</a>
+                <a href="#">instalação</a>
+                <a href="#">performance</a>
+            </nav>
 
-        <div class="secondary-menu">
-            <a href="#">info</a>
-            <a href="#">contacto</a>
-        </div>
+            <div class="secondary-menu">
+                <a href="#">info</a>
+                <a href="#">contacto</a>
+            </div>
+
+        </header>
+
+        <main>
+        </main>
 
     </div>
 
+
+    <!-- BOTÃO SHARE -->
 
     <div class="share">
 
@@ -259,53 +271,51 @@
 
     </div>
 
-</div>
+
+    <script>
+
+        function toggleShare() {
+
+            const menu = document.getElementById("shareMenu");
+
+            menu.classList.toggle("open");
+
+        }
 
 
-<script>
-
-    function toggleShare() {
-
-        const menu = document.getElementById("shareMenu");
-
-        menu.classList.toggle("open");
-
-    }
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
 
 
-    const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent(document.title);
+        document.getElementById("whatsapp").href =
+            "https://wa.me/?text=" + title + "%20" + url;
 
 
-    document.getElementById("whatsapp").href =
-        "https://wa.me/?text=" + title + "%20" + url;
+        document.getElementById("facebook").href =
+            "https://www.facebook.com/sharer/sharer.php?u=" + url;
 
 
-    document.getElementById("facebook").href =
-        "https://www.facebook.com/sharer/sharer.php?u=" + url;
+        document.getElementById("twitter").href =
+            "https://twitter.com/intent/tweet?url=" + url + "&text=" + title;
 
 
-    document.getElementById("twitter").href =
-        "https://twitter.com/intent/tweet?url=" + url + "&text=" + title;
+        document.getElementById("telegram").href =
+            "https://t.me/share/url?url=" + url + "&text=" + title;
 
 
-    document.getElementById("telegram").href =
-        "https://t.me/share/url?url=" + url + "&text=" + title;
+        document.getElementById("email").href =
+            "mailto:?subject=" + title + "&body=" + url;
 
 
-    document.getElementById("email").href =
-        "mailto:?subject=" + title + "&body=" + url;
+        function copyLink() {
 
+            navigator.clipboard.writeText(window.location.href);
 
-    function copyLink() {
+            alert("Link copiado.");
 
-        navigator.clipboard.writeText(window.location.href);
+        }
 
-        alert("Link copiado.");
-
-    }
-
-</script>
+    </script>
 
 </body>
 </html>
