@@ -44,12 +44,25 @@
         }
 
 
-        /* LOGO */
+        /* LOGO / BOTÃO */
 
-        .logo {
+        .logo-button {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+
+            color: #151515;
+            font-family: Georgia, "Times New Roman", serif;
             font-size: 60px;
             font-weight: normal;
-            margin-bottom: 65px;
+
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .logo-button:hover {
+            text-decoration: underline;
         }
 
 
@@ -58,8 +71,37 @@
         nav {
             display: flex;
             flex-direction: column;
+
             gap: 18px;
+
+            margin-top: 25px;
+
+            opacity: 0;
+            transform: translateY(-12px);
+
+            max-height: 0;
+            overflow: hidden;
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.35s ease,
+                transform 0.35s ease,
+                max-height 0.45s ease;
         }
+
+
+        /* MENU ABERTO */
+
+        nav.open {
+            opacity: 1;
+            transform: translateY(0);
+
+            max-height: 400px;
+
+            pointer-events: auto;
+        }
+
 
         nav a {
             color: #151515;
@@ -79,6 +121,7 @@
 
             display: flex;
             flex-direction: column;
+
             gap: 18px;
         }
 
@@ -216,13 +259,13 @@
                 min-height: 100vh;
             }
 
-            .logo {
+            .logo-button {
                 font-size: 50px;
-                margin-bottom: 45px;
             }
 
             nav {
                 gap: 16px;
+                margin-top: 20px;
             }
 
             nav a {
@@ -271,12 +314,15 @@
 
         <header class="menu">
 
-            <div class="logo">
+            <button
+                class="logo-button"
+                onclick="toggleMainMenu()"
+            >
                 corpoarquivo.
-            </div>
+            </button>
 
 
-            <nav>
+            <nav id="mainMenu">
 
                 <a href="#">texto</a>
 
@@ -335,47 +381,29 @@
             id="shareMenu"
         >
 
-            <a
-                id="whatsapp"
-                target="_blank"
-            >
+            <a id="whatsapp" target="_blank">
                 WhatsApp
             </a>
 
-
-            <a
-                id="facebook"
-                target="_blank"
-            >
+            <a id="facebook" target="_blank">
                 Facebook
             </a>
 
-
-            <a
-                id="twitter"
-                target="_blank"
-            >
+            <a id="twitter" target="_blank">
                 X
             </a>
-
 
             <button onclick="shareInstagram()">
                 Instagram
             </button>
 
-
-            <a
-                id="telegram"
-                target="_blank"
-            >
+            <a id="telegram" target="_blank">
                 Telegram
             </a>
-
 
             <a id="email">
                 Email
             </a>
-
 
             <button onclick="copyLink()">
                 copiar link
@@ -388,6 +416,21 @@
 
     <script>
 
+
+        /* MENU PRINCIPAL */
+
+        function toggleMainMenu() {
+
+            const menu =
+                document.getElementById("mainMenu");
+
+            menu.classList.toggle("open");
+
+        }
+
+
+        /* SHARE */
+
         function toggleShare() {
 
             const menu =
@@ -397,6 +440,8 @@
 
         }
 
+
+        /* LINKS DE PARTILHA */
 
         const url =
             encodeURIComponent(
@@ -443,6 +488,8 @@
             + url;
 
 
+        /* INSTAGRAM */
+
         function shareInstagram() {
 
             navigator.clipboard.writeText(
@@ -456,6 +503,8 @@
 
         }
 
+
+        /* COPIAR LINK */
 
         function copyLink() {
 
