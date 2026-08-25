@@ -1,573 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>corpoarquivo.</title>
-
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
 <style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:#dedfe1;color:#151515;font-family:"IBM Plex Mono",monospace}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{text-decoration:none;color:#151515}
 
-* {
-    box-sizing: border-box;
-}
+.site{display:grid;grid-template-columns:36% 64%;min-height:100vh}
+.menu{padding:45px 100px;min-height:100vh;display:flex;flex-direction:column}
 
-html,
-body {
-    margin: 0;
-    min-height: 100%;
-}
+.logo-button{font-size:60px;text-align:left;white-space:nowrap}
 
-body {
-    background: #dedfe1;
-    color: #151515;
-    font-family: "IBM Plex Mono", monospace;
-}
+.main-menu,.secondary-menu{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.main-menu{margin-top:30px;opacity:0;transform:translateY(-12px);visibility:hidden;pointer-events:none;transition:.35s}
+.main-menu.open{opacity:1;transform:none;visibility:visible;pointer-events:auto}
 
-.site {
-    display: grid;
-    grid-template-columns: 36% 64%;
-    min-height: 100vh;
-}
+.main-menu a,.secondary-menu a{width:max-content;font-size:28px;line-height:1.25;white-space:nowrap}
+.secondary-menu{margin-top:auto}
 
-.menu {
-    padding: 45px 100px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+main{min-height:100vh;padding:45px 100px;display:flex;align-items:center;justify-content:flex-end}
+.main-image{max-width:65%;max-height:calc(100vh - 260px);object-fit:contain;filter:grayscale(100%)}
 
-button {
-    font-family: inherit;
-    color: inherit;
-    cursor: pointer;
-    text-decoration: none !important;
-}
+.languages{position:fixed;top:45px;right:100px;display:flex;gap:20px;z-index:10}
+.language-button{font-size:18px}
 
-.logo-button,
-.share-button,
-.language-button,
-.share-menu button {
-    background: none;
-    border: 0;
-    padding: 0;
-    text-decoration: none !important;
-}
+.share{position:fixed;right:100px;bottom:45px;z-index:10}
+.share-button{font-size:28px}
 
-
-/* LOGO */
-
-.logo-button {
-    font-size: 60px;
-    text-align: left;
-    white-space: nowrap;
-}
-
-
-/* HOVER — APENAS SOMBRA */
+.share-menu{display:none;position:absolute;right:0;bottom:45px;min-width:190px;padding:18px 22px;background:#dedfe1;border:1px solid #151515;flex-direction:column;gap:12px}
+.share-menu.open{display:flex}
+.share-menu a,.share-menu button{font-size:20px;text-align:left}
 
 .logo-button:hover,
 .main-menu a:hover,
 .secondary-menu a:hover,
+.language-button:hover,
 .share-button:hover,
 .share-menu a:hover,
-.share-menu button:hover,
-.language-button:hover,
-.language-button.active {
-    text-decoration: none !important;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.18);
+.share-menu button:hover{
+    text-shadow:1px 1px 3px rgba(0,0,0,.18);
 }
 
-
-/* MENU */
-
-.main-menu,
-.secondary-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
+@media(max-width:700px){
+    .site{grid-template-columns:1fr}
+    .menu{padding:30px 35px}
+    .logo-button{font-size:50px}
+    .main-menu a,.secondary-menu a{font-size:24px;white-space:normal}
+    main{min-height:70vh;padding:30px 35px;justify-content:center}
+    .main-image{max-width:100%;max-height:70vh}
+    .languages{top:30px;right:35px;gap:12px}
+    .language-button{font-size:14px}
+    .share{right:35px;bottom:30px}
+    .share-button{font-size:24px}
 }
-
-.main-menu {
-    margin-top: 30px;
-    opacity: 0;
-    transform: translateY(-12px);
-    visibility: hidden;
-    pointer-events: none;
-
-    transition:
-        opacity .35s ease,
-        transform .35s ease;
-}
-
-.main-menu.open {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.main-menu a,
-.secondary-menu a {
-    width: max-content;
-    color: #151515;
-    text-decoration: none !important;
-    font-size: 28px;
-    line-height: 1.25;
-    white-space: nowrap;
-}
-
-.secondary-menu {
-    margin-top: auto;
-}
-
-
-/* IMAGEM */
-
-main {
-    min-height: 100vh;
-    padding: 45px 100px;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.main-image {
-    display: block;
-    width: auto;
-    height: auto;
-
-    max-width: 65%;
-    max-height: calc(100vh - 260px);
-
-    object-fit: contain;
-
-    filter: grayscale(100%);
-}
-
-
-/* IDIOMAS */
-
-.languages {
-    position: fixed;
-    top: 45px;
-    right: 100px;
-
-    display: flex;
-    gap: 20px;
-
-    z-index: 10;
-}
-
-.language-button {
-    font-size: 18px;
-}
-
-
-/* SHARE */
-
-.share {
-    position: fixed;
-    right: 100px;
-    bottom: 45px;
-
-    z-index: 10;
-}
-
-.share-button {
-    font-size: 28px;
-}
-
-.share-menu {
-    display: none;
-
-    position: absolute;
-    right: 0;
-    bottom: 45px;
-
-    min-width: 190px;
-    padding: 18px 22px;
-
-    background: #dedfe1;
-    border: 1px solid #151515;
-
-    flex-direction: column;
-    gap: 12px;
-}
-
-.share-menu.open {
-    display: flex;
-}
-
-.share-menu a,
-.share-menu button {
-    color: #151515;
-    font-size: 20px;
-    text-align: left;
-    text-decoration: none !important;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-    .site {
-        grid-template-columns: 1fr;
-    }
-
-    .menu {
-        padding: 30px 35px;
-    }
-
-    .logo-button {
-        font-size: 50px;
-    }
-
-    .main-menu a,
-    .secondary-menu a {
-        font-size: 24px;
-        white-space: normal;
-    }
-
-    main {
-        min-height: 70vh;
-        padding: 30px 35px;
-        justify-content: center;
-    }
-
-    .main-image {
-        max-width: 100%;
-        max-height: 70vh;
-    }
-
-    .languages {
-        top: 30px;
-        right: 35px;
-        gap: 12px;
-    }
-
-    .language-button {
-        font-size: 14px;
-    }
-
-    .share {
-        right: 35px;
-        bottom: 30px;
-    }
-
-    .share-button {
-        font-size: 24px;
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-
 <div class="site">
+<header class="menu">
 
-    <header class="menu">
+<button class="logo-button" id="logo">corpoarquivo.</button>
 
-        <button
-            class="logo-button"
-            id="logoButton"
-            type="button"
-        >
-            corpoarquivo.
-        </button>
+<nav class="main-menu" id="menu">
+<a href="#" data-key="texto">texto</a>
+<a href="#" data-key="som">som</a>
+<a href="#" data-key="imagem">imagem</a>
+<a href="#" data-key="instalacao">instalação</a>
+<a href="#" data-key="performance">performance</a>
+</nav>
 
-
-        <nav
-            class="main-menu"
-            id="mainMenu"
-        >
-
-            <a href="#" data-key="texto">
-                texto
-            </a>
-
-            <a href="#" data-key="som">
-                som
-            </a>
-
-            <a href="#" data-key="imagem">
-                imagem
-            </a>
-
-            <a href="#" data-key="instalacao">
-                instalação
-            </a>
-
-            <a href="#" data-key="performance">
-                performance
-            </a>
-
-        </nav>
-
-
-        <div class="secondary-menu">
-
-            <a href="#" data-key="info">
-                info
-            </a>
-
-            <a href="#" data-key="contacto">
-                contacto
-            </a>
-
-        </div>
-
-    </header>
-
-
-    <main>
-
-        <img
-            class="main-image"
-            src="imagens/imagem.png"
-            alt=""
-        >
-
-    </main>
-
+<div class="secondary-menu">
+<a href="#" data-key="info">info</a>
+<a href="#" data-key="contacto">contacto</a>
 </div>
 
+</header>
 
-<!-- IDIOMAS -->
+<main>
+<img class="main-image" src="imagens/imagem.png" alt="">
+</main>
+</div>
+
 
 <div class="languages">
-
-    <button
-        class="language-button active"
-        data-lang="pt"
-        type="button"
-    >
-        PT
-    </button>
-
-    <button
-        class="language-button"
-        data-lang="en"
-        type="button"
-    >
-        EN
-    </button>
-
-    <button
-        class="language-button"
-        data-lang="fr"
-        type="button"
-    >
-        FR
-    </button>
-
-    <button
-        class="language-button"
-        data-lang="es"
-        type="button"
-    >
-        ES
-    </button>
-
+<button class="language-button" data-lang="pt">PT</button>
+<button class="language-button" data-lang="en">EN</button>
+<button class="language-button" data-lang="fr">FR</button>
+<button class="language-button" data-lang="es">ES</button>
 </div>
 
 
-<!-- SHARE -->
-
 <div class="share">
+<button class="share-button" id="share">share</button>
 
-    <button
-        class="share-button"
-        id="shareButton"
-        type="button"
-    >
-        share
-    </button>
-
-
-    <div
-        class="share-menu"
-        id="shareMenu"
-    >
-
-        <a id="whatsapp" target="_blank">
-            WhatsApp
-        </a>
-
-        <a id="facebook" target="_blank">
-            Facebook
-        </a>
-
-        <a id="twitter" target="_blank">
-            X
-        </a>
-
-        <button id="instagram" type="button">
-            Instagram
-        </button>
-
-        <a id="telegram" target="_blank">
-            Telegram
-        </a>
-
-        <a id="email">
-            Email
-        </a>
-
-        <button id="copy" type="button">
-            copiar link
-        </button>
-
-    </div>
-
+<div class="share-menu" id="shareMenu">
+<a id="whatsapp" target="_blank">WhatsApp</a>
+<a id="facebook" target="_blank">Facebook</a>
+<a id="twitter" target="_blank">X</a>
+<button id="instagram">Instagram</button>
+<a id="telegram" target="_blank">Telegram</a>
+<a id="email">Email</a>
+<button id="copy">copiar link</button>
+</div>
 </div>
 
 
 <script>
-
-const translations = {
-
-    pt: {
-        texto: "texto",
-        som: "som",
-        imagem: "imagem",
-        instalacao: "instalação",
-        performance: "performance",
-        info: "info",
-        contacto: "contacto"
-    },
-
-    en: {
-        texto: "text",
-        som: "sound",
-        imagem: "image",
-        instalacao: "installation",
-        performance: "performance",
-        info: "info",
-        contacto: "contact"
-    },
-
-    fr: {
-        texto: "texte",
-        som: "son",
-        imagem: "image",
-        instalacao: "installation",
-        performance: "performance",
-        info: "info",
-        contacto: "contact"
-    },
-
-    es: {
-        texto: "texto",
-        som: "sonido",
-        imagem: "imagen",
-        instalacao: "instalación",
-        performance: "performance",
-        info: "info",
-        contacto: "contacto"
-    }
-
+const T={
+pt:{texto:"texto",som:"som",imagem:"imagem",instalacao:"instalação",performance:"performance",info:"info",contacto:"contacto"},
+en:{texto:"text",som:"sound",imagem:"image",instalacao:"installation",performance:"performance",info:"info",contacto:"contact"},
+fr:{texto:"texte",som:"son",imagem:"image",instalacao:"installation",performance:"performance",info:"info",contacto:"contact"},
+es:{texto:"texto",som:"sonido",imagem:"imagen",instalacao:"instalación",performance:"performance",info:"info",contacto:"contacto"}
 };
 
+logo.onclick=()=>menu.classList.toggle("open");
 
-/* MENU */
-
-const logoButton = document.getElementById("logoButton");
-const mainMenu = document.getElementById("mainMenu");
-
-logoButton.onclick = () => {
-    mainMenu.classList.toggle("open");
-};
-
-
-/* IDIOMAS */
-
-document.querySelectorAll(".language-button").forEach(button => {
-
-    button.onclick = () => {
-
-        const lang = button.dataset.lang;
-
-        document.querySelectorAll("[data-key]").forEach(element => {
-            element.textContent =
-                translations[lang][element.dataset.key];
-        });
-
-        document.querySelectorAll(".language-button").forEach(b => {
-            b.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        document.documentElement.lang = lang;
-    };
-
+document.querySelectorAll(".language-button").forEach(b=>b.onclick=()=>{
+    const l=b.dataset.lang;
+    document.querySelectorAll("[data-key]").forEach(e=>e.textContent=T[l][e.dataset.key]);
+    document.documentElement.lang=l;
 });
 
+share.onclick=()=>shareMenu.classList.toggle("open");
 
-/* SHARE */
+const u=encodeURIComponent(location.href),t=encodeURIComponent(document.title);
 
-const shareButton = document.getElementById("shareButton");
-const shareMenu = document.getElementById("shareMenu");
+whatsapp.href=`https://wa.me/?text=${t}%20${u}`;
+facebook.href=`https://www.facebook.com/sharer/sharer.php?u=${u}`;
+twitter.href=`https://twitter.com/intent/tweet?url=${u}&text=${t}`;
+telegram.href=`https://t.me/share/url?url=${u}&text=${t}`;
+email.href=`mailto:?subject=${t}&body=${u}`;
 
-shareButton.onclick = () => {
-    shareMenu.classList.toggle("open");
+instagram.onclick=()=>{
+    navigator.clipboard.writeText(location.href);
+    window.open("https://www.instagram.com/","_blank");
 };
 
-
-/* LINKS DE PARTILHA */
-
-const url = encodeURIComponent(location.href);
-const title = encodeURIComponent(document.title);
-
-document.getElementById("whatsapp").href =
-    `https://wa.me/?text=${title}%20${url}`;
-
-document.getElementById("facebook").href =
-    `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-
-document.getElementById("twitter").href =
-    `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
-
-document.getElementById("telegram").href =
-    `https://t.me/share/url?url=${url}&text=${title}`;
-
-document.getElementById("email").href =
-    `mailto:?subject=${title}&body=${url}`;
-
-
-/* INSTAGRAM */
-
-document.getElementById("instagram").onclick = () => {
-
+copy.onclick=()=>{
     navigator.clipboard.writeText(location.href);
-
-    window.open(
-        "https://www.instagram.com/",
-        "_blank"
-    );
-};
-
-
-/* COPIAR LINK */
-
-document.getElementById("copy").onclick = () => {
-
-    navigator.clipboard.writeText(location.href);
-
     alert("Link copiado.");
 };
-
 </script>
 
 </body>
